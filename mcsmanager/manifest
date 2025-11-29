@@ -1,0 +1,11 @@
+appname=mcsmanager
+version=10.11.0
+desc=开源，一键开服，分布式架构，多用户，现代化的 Minecraft 和 Steam 游戏服务器管理面板，此应用整合了节点端和面板端两个子应用，默认需要 23333 和 24444 端口才可正常工作。
+arch=x86_64
+display_name=MCSManager 面板
+maintainer=YuMao
+distributor=YuMao
+desktop_uidir=ui
+desktop_applaunchname=mcsmanager.Application
+source=thirdparty
+install_dep_apps=nodejs_v22

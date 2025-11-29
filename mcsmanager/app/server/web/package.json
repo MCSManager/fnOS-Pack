@@ -1,0 +1,70 @@
+{
+  "name": "mcsmanager-panel",
+  "version": "10.10.3",
+  "daemonVersion": "4.10.3",
+  "description": "Provide MCSManager with the ability to connect and control all Daemons, and provide API services for the front end.",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts,js --exec \"npm run build && node --enable-source-maps production/app.js\"",
+    "build": "webpack --config webpack.config.js"
+  },
+  "homepage": "https://mcsmanager.com/",
+  "author": "https://github.com/yumao233",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MCSManager/MCSManager"
+  },
+  "_moduleAliases": {
+    "@languages": "../languages"
+  },
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "@types/qrcode": "^1.5.5",
+    "axios": "^1.8.2",
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
+    "formidable": "^3.5.1",
+    "i18n": "^0.15.0",
+    "i18next": "^21.8.14",
+    "koa": "^2.15.4",
+    "koa-body": "^6.0.1",
+    "koa-mount": "^4.0.0",
+    "koa-session": "^6.2.0",
+    "koa-static": "^5.0.0",
+    "log4js": "^6.4.0",
+    "mcsmanager-common": "1.1.0",
+    "md5": "^2.3.0",
+    "nanoid": "^3.3.8",
+    "node-schedule": "^2.0.0",
+    "open": "^8.4.0",
+    "os-utils": "0.0.14",
+    "otplib": "^12.0.1",
+    "qrcode": "^1.5.3",
+    "redis": "^4.5.1",
+    "socket.io": "^4.5.3",
+    "socket.io-client": "^4.7.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/formidable": "^3.4.5",
+    "@types/fs-extra": "^9.0.11",
+    "@types/koa": "^2.13.1",
+    "@types/koa__router": "^8.0.4",
+    "@types/koa-session": "^5.10.3",
+    "@types/koa-static": "^4.0.1",
+    "@types/md5": "^2.3.1",
+    "@types/node": "^14.14.41",
+    "@types/node-schedule": "^1.3.2",
+    "@types/os-utils": "0.0.1",
+    "@types/uuid": "^8.3.0",
+    "eslint": "^7.23.0",
+    "nodemon": "^3.1.10",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

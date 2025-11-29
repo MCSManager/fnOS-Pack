@@ -1,0 +1,29 @@
+#!/bin/bash
+
+### This script is called after the user installs the application.
+
+# log
+LOG_FILE="${TRIM_PKGVAR}/info.log"
+
+# node 目录
+export PATH=/var/apps/nodejs_v22/target/bin:$PATH
+
+# npm 缓存
+export npm_config_cache=${TRIM_APPDEST}/.npm-cache
+export npm_config_tmp=${TRIM_APPDEST}/.npm-tmp
+
+# 用户目录
+IFS=':' read -r -a SHARE_PATHS <<< "$TRIM_DATA_SHARE_PATHS"
+
+# 软链挂载
+ln -s "${SHARE_PATHS[0]}" "${TRIM_APPDEST}/server/daemon/data" >> "${LOG_FILE}" 2>&1
+ln -s "${SHARE_PATHS[1]}" "${TRIM_APPDEST}/server/daemon/logs" >> "${LOG_FILE}" 2>&1
+ln -s "${SHARE_PATHS[2]}" "${TRIM_APPDEST}/server/web/data" >> "${LOG_FILE}" 2>&1
+ln -s "${SHARE_PATHS[3]}" "${TRIM_APPDEST}/server/web/logs" >> "${LOG_FILE}" 2>&1
+# npm 安装
+cd "${TRIM_APPDEST}/server/daemon" && npm i --production --no-fund --no-audit --registry=https://registry.npmmirror.com >> "${LOG_FILE}" 2>&1
+cd "${TRIM_APPDEST}/server/web" && npm i --production --no-fund --no-audit --registry=https://registry.npmmirror.com >> "${LOG_FILE}" 2>&1
+
+echo "初始化完成" >> "${LOG_FILE}"
+
+exit 0

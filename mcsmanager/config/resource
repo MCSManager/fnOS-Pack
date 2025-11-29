@@ -1,0 +1,38 @@
+{
+  "data-share": {
+    "shares": [
+      {
+        "name": "mcsmanager/daemon/data",
+        "permission": {
+          "rw": [
+            "mcsmanager"
+          ]
+        }
+      },
+      {
+        "name": "mcsmanager/daemon/logs",
+        "permission": {
+          "rw": [
+            "mcsmanager"
+          ]
+        }
+      },
+      {
+        "name": "mcsmanager/web/data",
+        "permission": {
+          "rw": [
+            "mcsmanager"
+          ]
+        }
+      },
+      {
+        "name": "mcsmanager/web/logs",
+        "permission": {
+          "rw": [
+            "mcsmanager"
+          ]
+        }
+      }
+    ]
+  }
+}
