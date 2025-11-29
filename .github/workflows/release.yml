@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-release:
+    name: Build Project and Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.0
+
+      - name: Build Package
+        run: |
+          chmod +x ./build/fnpack-1.0.4-linux-amd64
+          ./build/fnpack-1.0.4-linux-amd64 build mcsmanager
+
+      - name: Get current package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+        path: mcsmanager/app/server/web
+
+      - name: Release
+        uses: ncipollo/release-action@v1.20.0
+        with:
+          tag: v${{ steps.package-version.outputs.current-version}}
+          name: v${{ steps.package-version.outputs.current-version}}
+          body: [CHANGELOG](https://github.com/MCSManager/MCSManager/releases/tag/v${{ steps.package-version.outputs.current-version}})
+          artifacts: "mcsmanager.fpk"
+          token: ${{ secrets.GITHUB_TOKEN }}
